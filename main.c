@@ -19,8 +19,8 @@ int len = 1400;
 char local_ipv4_addr_name[100];
 char target_ipv4_addr_name[100];
 char device_name[100];
-unsigned short dst_port = 68;
-unsigned short src_port = 67;
+unsigned short dst_port = 6668;
+unsigned short src_port = 6667;
 
 static void usage()
 {
