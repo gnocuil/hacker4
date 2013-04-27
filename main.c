@@ -14,8 +14,10 @@
 
 #include "socket.h"
 
+#define DELAY 500
+
 int count = 0;
-int len = 1400;
+int len = 1000;
 char local_ipv4_addr_name[100];
 char target_ipv4_addr_name[100];
 char device_name[100];
@@ -199,8 +201,23 @@ int main(int argc, char **argv)
 	    return 0;
 	}
     printf("count=%d\n", count);
+//    puts("sleep for 5s");
+//    sleep(5);
     init_socket();
+    while (1) {
+    int delay = DELAY;
     for (i = 0; i < count || count <= 0; ++i) {
         sendpacket();
+	--delay;
+	if (delay == 0) {
+		delay = DELAY;
+		//usleep(10);
+	}
+    }
+    break;
+//    int time = 10 + rand() % 10;
+    int time = 10 + rand() % 10;
+    printf("sleep for %ds\n", time);
+    sleep(time);
     }
 }
